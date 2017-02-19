@@ -41,12 +41,13 @@ public class MyTest {
 
     @Test
     public void multipleOperationsSameButton(){
-        methods.click(Elements.addButton);
-        methods.assertText("'new number =1' value should be displayed in the output text field", Elements.output, "new number =1");
-        methods.click(Elements.addButton);
-        methods.assertText("'new number =2' value should be displayed in the output text field", Elements.output, "new number =2");
-        methods.click(Elements.addButton);
-        methods.assertText("'new number =3' value should be displayed in the output text field", Elements.output, "new number =3");
+
+        int number = 1;
+        for (int i = 0; i < 2; i++) {
+            methods.click(Elements.addButton);
+            methods.assertText("'new number =" + number + "' value should be displayed in the output text field", Elements.output, "new number =" + number);
+            number++;
+        }
     }
 
     @Test
