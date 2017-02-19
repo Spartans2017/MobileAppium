@@ -3,7 +3,6 @@ package test;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class MyTest {
@@ -23,47 +22,45 @@ public class MyTest {
 
     @Test
     public void layout(){
-        methods.assertEnabled("addition button should be enabled", By.id("com.test.calc:id/add_b"), true);
-        methods.assertEnabled("subtraction button should be enabled", By.id("com.test.calc:id/sub_b"), true);
-        methods.assertAttribute("output should not be clickable", By.id("com.test.calc:id/tv2"), "clickable", "false");
-        methods.assertText("title should equal 'Calculator'", By.id("android:id/title"), "Calculator");
+        methods.assertEnabled("addition button should be enabled", Elements.addButton, true);
+        methods.assertEnabled("subtraction button should be enabled", Elements.subButton, true);
+        methods.assertAttribute("output should not be clickable", Elements.output, "clickable", "false");
+        methods.assertText("title should equal 'Calculator'", Elements.title, "Calculator");
     }
 
     @Test
     public void additionOperation(){
-        methods.click(By.id("com.test.calc:id/add_b"));
-        methods.assertText("should equals to 'ADD'", By.id("com.test.calc:id/add_b"), "ADD");
+        methods.click(Elements.addButton);
+        methods.assertText("should equals to 'ADD'", Elements.addButton, "ADD");
     }
 
     @Test
     public void subtractionOperation(){
-        methods.click(By.id("com.test.calc:id/sub_b"));
-        methods.assertText("should equals to 'SUB'", By.id("com.test.calc:id/sub_b"), "SUB");
+        methods.click(Elements.subButton);
+        methods.assertText("should equals to 'SUB'", Elements.subButton, "SUB");
     }
 
     @Test
     public void multipleOperationsSameButton(){
-
-        methods.click(By.id("com.test.calc:id/add_b"));
-        methods.assertText("'new number =1' value should be displayed in the output text field", By.id("com.test.calc:id/tv2"), "new number =1");
-        methods.click(By.id("com.test.calc:id/add_b"));
-        methods.assertText("'new number =2' value should be displayed in the output text field", By.id("com.test.calc:id/tv2"), "new number =2");
-        methods.click(By.id("com.test.calc:id/add_b"));
-        methods.assertText("'new number =3' value should be displayed in the output text field", By.id("com.test.calc:id/tv2"), "new number =3");
+        methods.click(Elements.addButton);
+        methods.assertText("'new number =1' value should be displayed in the output text field", Elements.output, "new number =1");
+        methods.click(Elements.addButton);
+        methods.assertText("'new number =2' value should be displayed in the output text field", Elements.output, "new number =2");
+        methods.click(Elements.addButton);
+        methods.assertText("'new number =3' value should be displayed in the output text field", Elements.output, "new number =3");
     }
 
     @Test
     public void multipleOperationsRandom(){
-
-        methods.click(By.id("com.test.calc:id/sub_b"));
-        methods.assertText("'new number =-1' value should be displayed in the output text field", By.id("com.test.calc:id/tv2"), "new number =-1");
-        methods.click(By.id("com.test.calc:id/add_b"));
-        methods.assertText("'new number =0' value should be displayed in the output text field", By.id("com.test.calc:id/tv2"), "new number =0");
-        methods.click(By.id("com.test.calc:id/sub_b"));
-        methods.assertText("'new number =-1' value should be displayed in the output text field", By.id("com.test.calc:id/tv2"), "new number =-1");
-        methods.click(By.id("com.test.calc:id/add_b"));
-        methods.assertText("'new number =0' value should be displayed in the output text field", By.id("com.test.calc:id/tv2"), "new number =0");
-        methods.click(By.id("com.test.calc:id/add_b"));
-        methods.assertText("'new number =1' value should be displayed in the output text field", By.id("com.test.calc:id/tv2"), "new number =1");
+        methods.click(Elements.subButton);
+        methods.assertText("'new number =-1' value should be displayed in the output text field", Elements.output, "new number =-1");
+        methods.click(Elements.addButton);
+        methods.assertText("'new number =0' value should be displayed in the output text field", Elements.output, "new number =0");
+        methods.click(Elements.subButton);
+        methods.assertText("'new number =-1' value should be displayed in the output text field", Elements.output, "new number =-1");
+        methods.click(Elements.addButton);
+        methods.assertText("'new number =0' value should be displayed in the output text field", Elements.output, "new number =0");
+        methods.click(Elements.addButton);
+        methods.assertText("'new number =1' value should be displayed in the output text field", Elements.output, "new number =1");
     }
 }
