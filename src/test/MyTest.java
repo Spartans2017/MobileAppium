@@ -24,7 +24,6 @@ public class MyTest {
     public void layout(){
         methods.assertEnabled("addition button should be enabled", Elements.addButton, true);
         methods.assertEnabled("subtraction button should be enabled", Elements.subButton, true);
-        methods.assertAttribute("output should not be clickable", Elements.output, "clickable", "false");
         methods.assertText("title should equal 'Calculator'", Elements.title, "Calculator");
     }
 
